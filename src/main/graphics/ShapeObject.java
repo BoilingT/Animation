@@ -4,7 +4,7 @@ import java.awt.Color;
 import java.awt.Shape;
 import java.awt.geom.AffineTransform;
 
-import gloabl.math.Vector2;
+import global.math.Vector2;
 
 public class ShapeObject {
 

@@ -2,7 +2,7 @@ package main;
 
 import java.awt.Color;
 
-import gloabl.math.Vector2;
+import global.math.Vector2;
 import main.graphics.Drawing;
 import main.graphics.ShapeObject;
 

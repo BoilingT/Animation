@@ -1,4 +1,4 @@
-package gloabl.math;
+package global.math;
 
 public class Vector2<T> {
 	

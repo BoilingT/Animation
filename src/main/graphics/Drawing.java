@@ -3,7 +3,7 @@ package main.graphics;
 import java.awt.Color;
 import java.util.ArrayList;
 
-import gloabl.math.Vector2;
+import global.math.Vector2;
 
 public class Drawing {
 	

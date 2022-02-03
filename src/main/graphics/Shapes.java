@@ -7,7 +7,7 @@ import java.awt.RenderingHints;
 import java.awt.Shape;
 import java.awt.geom.*;
 
-import gloabl.math.Vector2;
+import global.math.Vector2;
 
 public class Shapes {
 	

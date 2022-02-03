@@ -1,4 +1,4 @@
-package gloabl.math;
+package global.math;
 
 public class Vector3<T> extends Vector2<T>{
 	
