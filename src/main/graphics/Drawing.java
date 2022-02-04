@@ -12,6 +12,7 @@ public class Drawing {
 	
 	private static Color color = Color.black;
 	private static boolean fill = false;
+	private static boolean draw = true;
 	private static ArrayList<ShapeObject> objects = new ArrayList<>();
 	
 	public Drawing() {
@@ -32,6 +33,10 @@ public class Drawing {
 
 	public void setColor(Color color) {
 		this.color = color;
+	}
+	
+	public boolean shouldDraw() {
+		return draw;
 	}
 	
 	public ArrayList<ShapeObject> getObjects(){
@@ -77,5 +82,13 @@ public class Drawing {
 		line.setName(name);
 		addShape(line);
 		return line;
+	}
+	
+	public void stop() {
+		draw = false;
+	}
+	
+	public void play() {
+		draw = true;
 	}
 }

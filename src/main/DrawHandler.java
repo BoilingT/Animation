@@ -6,20 +6,23 @@ import global.math.Vector2;
 import global.math.Vector3;
 import main.graphics.GraphicGeometry;
 import main.graphics.ShapeObject;
+import windows.console.ConsoleWindow;
 
 public class DrawHandler {
 	
+	private ConsoleWindow console; 
 	private GraphicGeometry draw;
 	private ShapeObject rect;
 	private ShapeObject rect2;
 	
 	public DrawHandler() {
 		draw = GraphicGeometry.getInstance();
+		console = ConsoleWindow.getInstance();
 	}
 	
 	//Preparation
 	public void setup() {
-		System.out.println("Setup done!");
+		console.cout("Setup done!");
 	}
 	
 	
@@ -35,14 +38,14 @@ public class DrawHandler {
 		draw.addLines(new float[] {50f, 100f, 150f}, new float[] {50f, 10f, 50f}, "TriangleLine");
 		
 		for (ShapeObject shape : draw.getObjects()) {
-			System.out.println("Shape:" + "\n" +
+			console.cout("Shape:" + "\n" +
 					"name: " + shape.getName() + "\n" +
 					"pos: " + shape.getPos().toString() + "\n" +
 					"----------------------------------"
 					);
 		}
 		
-		System.out.println("Drawing done!");
+		console.cout("Drawing done!");
 	}
 	
 	float def = (float)(0.5 * Math.PI);

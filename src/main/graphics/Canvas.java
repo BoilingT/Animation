@@ -33,10 +33,12 @@ public class Canvas extends JPanel implements Runnable{
 		repaint();
 	}
 	
-	
 	//Logic
 	private void update() {
-		drawHandler.update();
+		if (Drawing.getInstance().shouldDraw()) {
+			drawHandler.update();
+			
+		}
 	}
 	
 	//Drawing

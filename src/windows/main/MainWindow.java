@@ -1,4 +1,4 @@
-package windows;
+package windows.main;
 
 import java.awt.Dimension;
 import java.awt.event.MouseEvent;
@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 
 import global.WindowHandler;
 import main.graphics.Canvas;
+import windows.console.ConsoleWindow;
 
 public class MainWindow {
 	
@@ -21,6 +22,7 @@ public class MainWindow {
 	
 	private WindowHandler window = new WindowHandler(WIDTH, HEIGHT, "Animation");
 	private Canvas canvas = new Canvas();
+	private ConsoleWindow consoleWindow;
 
 	private static MouseListener listener = new MouseListener() {
 		
@@ -64,10 +66,14 @@ public class MainWindow {
 	}
 	
 	public void init(Object[] objects) {
+		consoleWindow = (ConsoleWindow) objects[0];
+		
 		initWindowSize();
 		
 		canvas.addMouseListener(listener);
 		window.getContentPane().add(canvas);
 		window.Show();
+		
+		consoleWindow.cout(null);
 	}
 }
