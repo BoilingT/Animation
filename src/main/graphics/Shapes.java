@@ -33,26 +33,35 @@ public class Shapes {
 		return new Arc2D.Float(pos.getX(), pos.getY(), width, height, 0, 360, Arc2D.OPEN);
 	}
 	
+	public static Line2D.Float Line(Vector2<Float> origin, Vector2<Float> destination){
+		return new Line2D.Float(origin.getX(), origin.getY(), destination.getX(), destination.getY());
+	}
+	
 	public void drawRect(Vector2<Float> pos, float width, float height, Color color) {
-		Rectangle2D.Float rect = new Rectangle2D.Float(pos.getX(), pos.getY(), width, height);
+		Rectangle2D.Float rect = Rect(pos, width, height);
 		draw(rect, color);
 	}
 	
 	public void fillRect(Vector2<Float> pos, float width, float height, Color color) {
-		Rectangle2D.Float rect = new Rectangle2D.Float(pos.getX(), pos.getY(), width, height);
+		Rectangle2D.Float rect = Rect(pos, width, height);
 		fill(rect, color);
 	}
 
 	public void drawArc(Vector2<Float> pos, float width, float height, Color color) {
-		Arc2D.Float arc = new Arc2D.Float(pos.getX(), pos.getY(), width, height, 0, 360, Arc2D.OPEN);
+		Arc2D.Float arc = Arc(pos, width, height);
 		draw(arc, color);
 	}
 	
 	public void fillArc(Vector2<Float> pos, float width, float height, Color color) {
-		Arc2D.Float arc = new Arc2D.Float(pos.getX(), pos.getY(), width, height, 0, 360, Arc2D.PIE);
+		Arc2D.Float arc = Arc(pos, width, height);
 		fill(arc, color);
 	}
 	
+	public void drawLine(Vector2<Float> origin, Vector2<Float> destination, Color color) {
+		Line2D.Float line = Line(origin, destination);
+		draw(line, color);
+	}
+		
 	public void draw(Shape s, Color color) {
 		g.setRenderingHint(
 			    RenderingHints.KEY_ANTIALIASING,

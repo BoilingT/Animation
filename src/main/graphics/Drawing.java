@@ -38,7 +38,7 @@ public class Drawing {
 		return objects;
 	}
 	
-	private void setObjects(ArrayList<ShapeObject> objects) {
+	public void setObjects(ArrayList<ShapeObject> objects) {
 		this.objects = objects;
 	}
 	
@@ -50,11 +50,11 @@ public class Drawing {
 		return objects.get(objects.indexOf(obj));
 	}
 	
-	private void addShape(ShapeObject obj) {
+	public void addShape(ShapeObject obj) {
 		objects.add(obj);
 	}
 	
-	private void deleteShape(ShapeObject obj) {
+	public void deleteShape(ShapeObject obj) {
 		objects.remove(obj);
 	}
 
@@ -70,5 +70,12 @@ public class Drawing {
 		arc.setName(name);
 		addShape(arc);
 		return arc;
+	}
+	
+	public ShapeObject addLine(Vector2<Float> origin, Vector2<Float> destination, String name) {
+		ShapeObject line = new ShapeObject(Shapes.Line(origin, destination), color, fill);
+		line.setName(name);
+		addShape(line);
+		return line;
 	}
 }

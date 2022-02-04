@@ -29,15 +29,6 @@ public class Canvas extends JPanel implements Runnable{
 	private void setup() {
 		drawHandler.setup();
 		drawHandler.draw();
-		//Background:
-//		ShapeObject obj = new ShapeObject(GraphicsHandler.Rect(new Vector2<Float>(0f, 0f), this.WIDTH, this.HEIGHT), Color.red, true); 
-//		//objects.add(obj);
-//
-//		//Objects:
-//		obj = new ShapeObject(GraphicsHandler.Rect(new Vector2<Float>(100f, 100f), 50, 50), Color.red, true); 
-//		addShape(obj);
-//		obj = new ShapeObject(GraphicsHandler.Arc(new Vector2<Float>(200f, 100f), 20, 20), Color.red, false); 
-//		addShape(obj);
 		
 		repaint();
 	}
@@ -46,10 +37,6 @@ public class Canvas extends JPanel implements Runnable{
 	//Logic
 	private void update() {
 		drawHandler.update();
-//		getObject(0).translate(new Vector2<Float>(10f,0f));
-//		getObject(1).translate(new Vector2<Float>(10f,10f));
-//		System.out.println(getObject(1).getPos().toString());
-//		getObject(1).setFilled(!getObject(1).isFilled());
 	}
 	
 	//Drawing
@@ -100,7 +87,6 @@ public class Canvas extends JPanel implements Runnable{
 	@Override
 	public void addNotify() {
 		super.addNotify();
-		//updateThread = new Thread(this);
 		new Thread(this).start();
 	}
 	

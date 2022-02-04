@@ -3,17 +3,18 @@ package main;
 import java.awt.Color;
 
 import global.math.Vector2;
-import main.graphics.Drawing;
+import global.math.Vector3;
+import main.graphics.GraphicGeometry;
 import main.graphics.ShapeObject;
 
 public class DrawHandler {
 	
-	private Drawing draw;
+	private GraphicGeometry draw;
 	private ShapeObject rect;
 	private ShapeObject rect2;
 	
 	public DrawHandler() {
-		draw = Drawing.getInstance();
+		draw = GraphicGeometry.getInstance();
 	}
 	
 	//Preparation
@@ -29,6 +30,10 @@ public class DrawHandler {
 		draw.addRect(new Vector2<Float>(0f, 200f), 500, 100, "Rect1");
 		rect.setFilled(true);
 		rect.setColor(Color.black);
+		
+		draw.addLine(new Vector2<Float>(0f,0f), new Vector2<Float>(100f, 100f), "Line1");
+		draw.addLines(new float[] {50f, 100f, 150f}, new float[] {50f, 20f, 50f}, "Triangle1");
+		
 		System.out.println("Drawing done!");
 	}
 	
@@ -46,6 +51,7 @@ public class DrawHandler {
 			rect2.setFilled(!rect2.isFilled());
 			rect.setFilled(!rect.isFilled());
 		}
+		
 		sleep(10);
 	}
 	
