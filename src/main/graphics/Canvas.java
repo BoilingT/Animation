@@ -2,6 +2,7 @@ package main.graphics;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.event.MouseEvent;
 
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -19,7 +20,6 @@ public class Canvas extends JPanel implements Runnable{
 	private final DrawHandler drawHandler = new DrawHandler();
 	public long updateDelay = 1;
 	private boolean running = true;
-	
 	
 	public Canvas() {
 		setup();

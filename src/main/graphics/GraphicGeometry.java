@@ -21,12 +21,10 @@ public class GraphicGeometry extends Drawing{
 	}
 	
 	public void addLines(float[] x, float[] y, String name) {
-//		float[] xValues = new float[] {x.getX(), x.getY(), x.getZ()};
-//		float[] xValues = new float[] {x.getX(), x.getY(), x.getZ()};
 		if (x.length - y.length == 0) {
 			int length = x.length;
 			for (int i = 0; i < length-1; i++) {
-				addLine(new Vector2<Float>(x[i], y[i]), new Vector2<Float>(x[i+1], y[i+1]), "");			
+				addLine(new Vector2<Float>(x[i], y[i]), new Vector2<Float>(x[i+1], y[i+1]), name);			
 			}
 		}
 	}
