@@ -145,7 +145,6 @@ public class ConsoleWindow {
 			if (commands.getCommands().containsKey(cmd)) {
 				commands.run(cmd);
 				cout("Command: " + cmd);
-				textArea.setCaretPosition(textArea.getText().indexOf(cmd));
 				inputArea.setText("");
 			}else {
 				inputArea.setText(cmd);
@@ -155,5 +154,10 @@ public class ConsoleWindow {
 	
 	public void cout(String msg) {
 		textArea.append(msg + "\n");
+		try {
+			textArea.setCaretPosition(textArea.getText().indexOf(msg.trim()));			
+		} catch (Exception e) {
+			return;
+		}
 	}
 }

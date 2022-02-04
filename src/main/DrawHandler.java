@@ -34,8 +34,8 @@ public class DrawHandler {
 		rect.setFilled(true);
 		rect.setColor(Color.black);
 		
-		draw.addLine(new Vector2<Float>(0f,0f), new Vector2<Float>(100f, 100f), "Line1");
-		draw.addLines(new float[] {50f, 100f, 150f}, new float[] {50f, 10f, 50f}, "TriangleLine");
+		draw.addLine(new Vector2<Float>(50f,0f), new Vector2<Float>(50f, 100f), "Line1");
+		draw.addLines(new float[] {50f, 100f, 100f}, new float[] {50f, 50f, 100f}, "TriangleLine");
 		
 		for (ShapeObject shape : draw.getObjects()) {
 			console.cout("Shape:" + "\n" +
