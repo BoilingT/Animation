@@ -78,7 +78,4 @@ public class ShapeObject {
 		this.setColor(color);
 		this.filled = fill;
 	}
-
-
-
 }

@@ -5,6 +5,8 @@ import java.util.Iterator;
 
 import javax.swing.JTextArea;
 
+import windows.console.commands.Commands;
+
 public class HelpPanel extends JTextArea{
 	private static Commands commands;
 	

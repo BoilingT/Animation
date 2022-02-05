@@ -1,14 +1,15 @@
-package windows.console;
+package windows.console.commands;
 
+import java.awt.Color;
 import java.util.HashMap;
 
 import main.graphics.Drawing;
 
 public class Commands {
 	private Drawing draw; 
-	private HashMap<String, IAction> commands;
+	private HashMap<String, Action> commands;
 	
-	public HashMap<String, IAction> getCommands() {
+	public HashMap<String, Action> getCommands() {
 		return commands;
 	}
 	
@@ -16,26 +17,31 @@ public class Commands {
 		draw = Drawing.getInstance();
 		
 		commands = new HashMap<>();
-		addFunc("stop", new IAction() {
+		addFunc("stop", new Action() {
 			
 			@Override
 			public void run() {
 				draw.stop();
-				System.out.println("PAUSE");
 			}
 		});
 		
-		addFunc("play", new IAction() {
+		addFunc("play", new Action() {
 			
 			@Override
 			public void run() {
 				draw.play();
-				System.out.println("PAUSE");
+			}
+		});
+		
+		addFunc("change color", new Action() {
+			@Override
+			public void run() {
+				draw.getObject(0).setColor(Color.blue);
 			}
 		});
 	}
 	
-	private void addFunc(String cmd, IAction actionListener) {
+	private void addFunc(String cmd, Action actionListener) {
 		if (commands == null) {
 			System.out.println("commands = null");
 			return;
@@ -50,8 +56,6 @@ public class Commands {
 			return;
 		}
 		
-		System.out.println(cmd + " ran");
-
 		commands.get(cmd).run();
 	}
 }

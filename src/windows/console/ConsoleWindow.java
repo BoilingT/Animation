@@ -15,6 +15,7 @@ import javax.swing.event.DocumentListener;
 import javax.swing.text.DefaultCaret;
 
 import global.WindowHandler;
+import windows.console.commands.Commands;
 
 public class ConsoleWindow {
 	private WindowHandler output = new WindowHandler(400, 500, "Console");

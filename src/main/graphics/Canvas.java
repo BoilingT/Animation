@@ -65,7 +65,7 @@ public class Canvas extends JPanel implements Runnable{
 						drawer.draw(object.getShape(), object.getColor());
 					}
 				}
-			}			
+			}
 		}
 		
 	}

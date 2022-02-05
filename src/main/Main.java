@@ -1,9 +1,7 @@
 package main;
 
-import global.*;
 import windows.console.ConsoleWindow;
 import windows.main.MainWindow;
-
 
 public class Main {
 	
