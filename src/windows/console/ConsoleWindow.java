@@ -112,11 +112,11 @@ public class ConsoleWindow {
 				if (key == KeyEvent.VK_ENTER) {
 					enterPressed();
 				}
-				String term = inputArea.getText();
+				String term = parseCommand(inputArea.getText().trim())[0];
 				if (helpArea != null) {
 					helpArea.searchCommands(term);
 					if (commands.getCommands().containsKey(term)) {
-						inputArea.setFont(new Font(inputArea.getFont().getFamily(), Font.BOLD, inputArea.getFont().getSize()+5));
+						inputArea.setFont(new Font(inputArea.getFont().getFamily(), Font.BOLD, 19));
 					}else {
 						inputArea.setFont(new Font(inputArea.getFont().getFamily(), Font.PLAIN, 14));
 					}
@@ -141,16 +141,22 @@ public class ConsoleWindow {
 	}
 	
 	private void enterPressed() {
-		String cmd = inputArea.getText().trim();
+		String[] inputVals = parseCommand(inputArea.getText().trim());
+		String cmd = inputVals[0].trim();
+		String args = inputVals.length > 1 ? inputVals[1].trim() : "";
 		if (cmd.length() > 0) {
 			if (commands.getCommands().containsKey(cmd)) {
-				commands.run(cmd);
-				cout("Command: " + cmd);
+				commands.run(cmd, args);
+				cout("Command: " + inputArea.getText().trim());
 				inputArea.setText("");
 			}else {
 				inputArea.setText(cmd);
 			}
 		}
+	}
+	
+	private String[] parseCommand(String str) {
+		return str.split(" ", 2);
 	}
 	
 	public void cout(String msg) {
