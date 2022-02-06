@@ -5,6 +5,7 @@ import java.awt.Color;
 import global.math.Vector2;
 import global.math.Vector3;
 import main.graphics.GraphicGeometry;
+import main.graphics.objects.ObjectCollection;
 import main.graphics.objects.ShapeObject;
 import windows.console.ConsoleWindow;
 
@@ -14,6 +15,7 @@ public class DrawHandler {
 	private GraphicGeometry draw;
 	private ShapeObject rect;
 	private ShapeObject rect2;
+	private ObjectCollection triangle;
 	
 	public DrawHandler() {
 		draw = GraphicGeometry.getInstance();
@@ -37,7 +39,7 @@ public class DrawHandler {
 //		draw.addLine(new Vector2<Float>(50f,0f), new Vector2<Float>(50f, 100f), "Line1");
 //		draw.addLines(new float[] {50f, 100f, 100f}, new float[] {50f, 50f, 100f}, "TriangleLine");
 		
-		draw.addTriangle(new Vector3<Float>(100f, 110f, 120f), new Vector3<Float>(50f, 20f, 50f), Color.black, false, null);
+		triangle = draw.addTriangle(new Vector3<Float>(100f, 110f, 120f), new Vector3<Float>(50f, 20f, 50f), Color.black, false, null);
 		
 		for (ShapeObject shape : draw.getObjects()) {
 			console.cout("Shape:" + "\n" +
@@ -57,6 +59,7 @@ public class DrawHandler {
 	
 	//Execution
 	public void update() {
+		
 		//System.out.println("x: " + x);
 //		rect.setPos(new Vector2<Float>(200 + (float) (Math.sin(x+=a)*200), 200f + (float) Math.cos(x+=a)*200));
 //		rect2.setPos(new Vector2<Float>(200 + (float) Math.sin(x)*200, 200f));

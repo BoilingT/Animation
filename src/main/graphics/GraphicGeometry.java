@@ -18,7 +18,7 @@ public class GraphicGeometry extends Drawing{
 		return instance;
 	}
 	
-	private void addCollection(ShapeObject[] objects, String name) {
+	private ObjectCollection getCollection(ShapeObject[] objects, String name) {
 		ObjectCollection collection = new ObjectCollection(name);
 		for (ShapeObject shapeObject : objects) {
 			try {
@@ -29,20 +29,23 @@ public class GraphicGeometry extends Drawing{
 				System.out.println("Could not add shapeobject");
 				System.out.println(e.getMessage());
 			}
-		}		
-		if (collection != null && collection.getObjects().size() > 0) {
-			getCollections().add(collection);			
 		}
+		return collection;
 	}
-	
-	public void addTriangle(Vector3<Float> x, Vector3<Float> y, Color color, boolean fill, String name) {
-		addCollection(new ShapeObject[] {
+		
+	public ObjectCollection addTriangle(Vector3<Float> x, Vector3<Float> y, Color color, boolean fill, String name) {
+		Vector2<Float> origin = new Vector2<Float>(0f, 0f);
+		ObjectCollection collection = getCollection(new ShapeObject[] {
 				
 				new ShapeObject(Shapes.Line(new Vector2<Float>(x.getX(), y.getX()), new Vector2<Float>(x.getY(), y.getY())), color, false),
 				new ShapeObject(Shapes.Line(new Vector2<Float>(x.getY(), y.getY()), new Vector2<Float>(x.getZ(), y.getZ())), color, false),
 				new ShapeObject(Shapes.Line(new Vector2<Float>(x.getZ(), y.getZ()), new Vector2<Float>(x.getX(), y.getX())), color, false)
 				
 		}, name);
+		
+		collection.transform().position().set(null, null);
+		
+		return collection;
 	}
 	
 	public void addLines(float[] x, float[] y, String name) {

@@ -28,6 +28,11 @@ public class Vector2<T> {
 		this.y = y;
 	}
 	
+	public void set(Vector2<T> vec2) {
+		this.x = vec2.getX();
+		this.y = vec2.getY();
+	}
+	
 	public String toString() {
 		return "[x: " + this.getX() + ", y: " + this.getY()+ "]"; 
 	}

@@ -34,6 +34,12 @@ public class Vector3<T> extends Vector2<T>{
 		this.z = z;
 	}
 	
+	public void set(Vector3<T> vec3) {
+		this.x = vec3.getX();
+		this.y = vec3.getY();
+		this.z = vec3.getZ();
+	}
+	
 	public String toString() {
 		return "[x: " + this.getX() + ", y: " + this.getY() + ", z: " + this.getZ() + "]"; 
 	}
