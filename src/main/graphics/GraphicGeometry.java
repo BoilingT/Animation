@@ -1,9 +1,10 @@
 package main.graphics;
-import java.awt.geom.Line2D;
+
+import java.awt.Color;
 
 import global.math.*;
-import main.graphics.Shapes;
 import main.graphics.objects.ObjectCollection;
+import main.graphics.objects.ShapeObject;
 
 public class GraphicGeometry extends Drawing{
 
@@ -17,13 +18,31 @@ public class GraphicGeometry extends Drawing{
 		return instance;
 	}
 	
-	private void addCollection() {
-		
+	private void addCollection(ShapeObject[] objects, String name) {
+		ObjectCollection collection = new ObjectCollection(name);
+		for (ShapeObject shapeObject : objects) {
+			try {
+				collection.add(shapeObject);
+				System.out.println("Hello");
+				
+			} catch (Exception e) {
+				System.out.println("Could not add shapeobject");
+				System.out.println(e.getMessage());
+			}
+		}		
+		if (collection != null && collection.getObjects().size() > 0) {
+			getCollections().add(collection);			
+		}
 	}
 	
-	public void addTriangle(Vector3<Float> x, Vector3<Float> y, String name) {
-		ObjectCollection collection = new ObjectCollection(name);
-		//collection.add(new ShapeObject(Shapes.Line(x.getX(), y.getX()), ));
+	public void addTriangle(Vector3<Float> x, Vector3<Float> y, Color color, boolean fill, String name) {
+		addCollection(new ShapeObject[] {
+				
+				new ShapeObject(Shapes.Line(new Vector2<Float>(x.getX(), y.getX()), new Vector2<Float>(x.getY(), y.getY())), color, false),
+				new ShapeObject(Shapes.Line(new Vector2<Float>(x.getY(), y.getY()), new Vector2<Float>(x.getZ(), y.getZ())), color, false),
+				new ShapeObject(Shapes.Line(new Vector2<Float>(x.getZ(), y.getZ()), new Vector2<Float>(x.getX(), y.getX())), color, false)
+				
+		}, name);
 	}
 	
 	public void addLines(float[] x, float[] y, String name) {

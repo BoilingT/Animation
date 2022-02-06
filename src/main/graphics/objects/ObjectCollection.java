@@ -33,6 +33,7 @@ public class ObjectCollection {
 		
 	public ObjectCollection(String name) {
 		this.name = name;
+		this.shapeObjects = new ArrayList<>();
 	}
 	
 	public ObjectCollection(String name, ArrayList<ShapeObject> shapeObjects) {

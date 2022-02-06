@@ -37,6 +37,8 @@ public class DrawHandler {
 //		draw.addLine(new Vector2<Float>(50f,0f), new Vector2<Float>(50f, 100f), "Line1");
 //		draw.addLines(new float[] {50f, 100f, 100f}, new float[] {50f, 50f, 100f}, "TriangleLine");
 		
+		draw.addTriangle(new Vector3<Float>(100f, 110f, 120f), new Vector3<Float>(50f, 20f, 50f), Color.black, false, null);
+		
 		for (ShapeObject shape : draw.getObjects()) {
 			console.cout("Shape:" + "\n" +
 					"name: " + shape.getName() + "\n" +
@@ -52,6 +54,7 @@ public class DrawHandler {
 	float x = def;
 	float a = 0.01f;
 	float b = 2.5f;
+	
 	//Execution
 	public void update() {
 		//System.out.println("x: " + x);
