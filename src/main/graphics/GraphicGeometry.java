@@ -42,6 +42,8 @@ public class GraphicGeometry extends Drawing{
 				
 		}, name);
 		
+		addCollection(collection);
+		
 		return collection;
 	}
 	

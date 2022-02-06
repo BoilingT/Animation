@@ -30,16 +30,16 @@ public class DrawHandler {
 	
 	//Drawing
 	public void draw() {
-//		rect = draw.addArc(new Vector2<Float>(0f, 0f), 100, 100, "Arc1");
-//		rect2 = draw.addArc(new Vector2<Float>(0f, 0f), 100, 100, "Arc2");
-//		draw.addRect(new Vector2<Float>(0f, 200f), 500, 100, "Rect1");
-//		rect.setFilled(true);
-//		rect.setColor(Color.black);
-//		
-//		draw.addLine(new Vector2<Float>(50f,0f), new Vector2<Float>(50f, 100f), "Line1");
-//		draw.addLines(new float[] {50f, 100f, 100f}, new float[] {50f, 50f, 100f}, "TriangleLine");
+		rect = draw.addArc(new Vector2<Float>(0f, 0f), 100, 100, "Arc1");
+		rect2 = draw.addArc(new Vector2<Float>(0f, 0f), 100, 100, "Arc2");
+		draw.addRect(new Vector2<Float>(0f, 200f), 500, 100, "Rect1");
+		rect.setFilled(true);
+		rect.setColor(Color.black);
 		
-		triangle = draw.addTriangle(new Vector3<Float>(100f, 110f, 120f), new Vector3<Float>(50f, 20f, 50f), Color.black, false, null);
+		draw.addLine(new Vector2<Float>(50f,0f), new Vector2<Float>(50f, 100f), "Line1");
+		draw.addLines(new float[] {50f, 100f, 100f}, new float[] {50f, 50f, 100f}, "TriangleLine");
+		
+		triangle = draw.addTriangle(new Vector3<Float>(100f, 110f, 120f), new Vector3<Float>(50f, 30f, 50f), Color.black, false, null);
 		
 		for (ShapeObject shape : draw.getObjects()) {
 			console.cout("Shape:" + "\n" +
@@ -61,13 +61,13 @@ public class DrawHandler {
 	public void update() {
 		
 		//System.out.println("x: " + x);
-//		rect.setPos(new Vector2<Float>(200 + (float) (Math.sin(x+=a)*200), 200f + (float) Math.cos(x+=a)*200));
-//		rect2.setPos(new Vector2<Float>(200 + (float) Math.sin(x)*200, 200f));
-//		if (x > (float) (b*Math.PI)) {
-//			x = def;
-//			rect2.setFilled(!rect2.isFilled());
-//			rect.setFilled(!rect.isFilled());
-//		}
+		rect.setPos(new Vector2<Float>(200 + (float) (Math.sin(x+=a)*200), 200f + (float) Math.cos(x+=a)*200));
+		rect2.setPos(new Vector2<Float>(200 + (float) Math.sin(x)*200, 200f));
+		if (x > (float) (b*Math.PI)) {
+			x = def;
+			rect2.setFilled(!rect2.isFilled());
+			rect.setFilled(!rect.isFilled());
+		}
 		
 		sleep(10);
 	}
