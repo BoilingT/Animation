@@ -34,7 +34,6 @@ public class GraphicGeometry extends Drawing{
 	}
 		
 	public ObjectCollection addTriangle(Vector3<Float> x, Vector3<Float> y, Color color, boolean fill, String name) {
-		Vector2<Float> origin = new Vector2<Float>(0f, 0f);
 		ObjectCollection collection = getCollection(new ShapeObject[] {
 				
 				new ShapeObject(Shapes.Line(new Vector2<Float>(x.getX(), y.getX()), new Vector2<Float>(x.getY(), y.getY())), color, false),
@@ -42,8 +41,6 @@ public class GraphicGeometry extends Drawing{
 				new ShapeObject(Shapes.Line(new Vector2<Float>(x.getZ(), y.getZ()), new Vector2<Float>(x.getX(), y.getX())), color, false)
 				
 		}, name);
-		
-		collection.transform().position().set(null, null);
 		
 		return collection;
 	}
