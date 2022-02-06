@@ -72,8 +72,6 @@ public class MainWindow {
 		
 		canvas.addMouseListener(listener);
 		window.getContentPane().add(canvas);
-		window.Show();
-		
-		consoleWindow.cout(null);
+		window.Show();		
 	}
 }

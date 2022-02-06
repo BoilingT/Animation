@@ -1,4 +1,4 @@
-package main.graphics;
+package main.graphics.objects;
 
 import java.awt.Color;
 import java.awt.Shape;
@@ -13,7 +13,7 @@ public class ShapeObject {
 	private Color color;
 	private boolean filled;
 
-	private Shape[] shape;
+	private Shape shape;
 	private AffineTransform transform;
 	
 	public String getName() {
@@ -25,7 +25,7 @@ public class ShapeObject {
 	}
 	
 	public Shape getShape() {
-		return shape[0];
+		return shape;
 	}
 	
 	public Vector2<Float> getPos() {
@@ -34,13 +34,13 @@ public class ShapeObject {
 	
 	public void setPos(Vector2<Float> pos) {
 		transform.setToTranslation(pos.getX() - this.pos.getX(), pos.getY() - this.pos.getY());
-		this.shape[0] = transform.createTransformedShape(this.shape[0]);
+		this.shape = transform.createTransformedShape(this.shape);
 		this.pos = pos;
 	}
 	
 	public void translate(Vector2<Float> translation) {
 		transform.setToTranslation(translation.getX(), translation.getY());
-		this.shape[0] = transform.createTransformedShape(this.shape[0]);
+		this.shape = transform.createTransformedShape(this.shape);
 		this.pos = new Vector2<Float>(pos.getX() + translation.getX(), pos.getY() + translation.getY());
 	}
 
@@ -73,7 +73,7 @@ public class ShapeObject {
 	public void set(Shape shape, Color color, boolean fill) {
 		transform = new AffineTransform();
 		Shape tempShape = transform.createTransformedShape(shape);
-		this.shape = new Shape[] {tempShape};
+		this.shape = tempShape;
 		this.pos = new Vector2<Float>((float) tempShape.getBounds().x, (float) tempShape.getBounds().y);
 		this.setColor(color);
 		this.filled = fill;

@@ -23,6 +23,11 @@ public class Vector2<T> {
 		return y;
 	}
 	
+	public void set(T x, T y) {
+		this.x = x;
+		this.y = y;
+	}
+	
 	public String toString() {
 		return "[x: " + this.getX() + ", y: " + this.getY()+ "]"; 
 	}

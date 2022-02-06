@@ -2,27 +2,36 @@ package global.math;
 
 public class Vector3<T> extends Vector2<T>{
 	
+	private T x;
+	private T y;
 	private T z;
 	
 	public Vector3() {
-		
+		this.x = this.y = this.z = null;
 	}
 	
 	public Vector3(T x, T y, T z) {
-		super(x, y);
+		this.x = x;
+		this.y = y;
 		this.z = z;
 	}
 
 	public T getX() {
-		return super.getX();
+		return this.x;
 	}
 
 	public T getY() {
-		return super.getY();
+		return this.y;
 	}
 
 	public T getZ() {
-		return z;
+		return this.z;
+	}
+	
+	public void set(T x, T y, T z) {
+		this.x = x;
+		this.y = y;
+		this.z = z;
 	}
 	
 	public String toString() {

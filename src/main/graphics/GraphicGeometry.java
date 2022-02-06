@@ -1,6 +1,9 @@
 package main.graphics;
+import java.awt.geom.Line2D;
 
 import global.math.*;
+import main.graphics.Shapes;
+import main.graphics.objects.ObjectCollection;
 
 public class GraphicGeometry extends Drawing{
 
@@ -14,10 +17,13 @@ public class GraphicGeometry extends Drawing{
 		return instance;
 	}
 	
+	private void addCollection() {
+		
+	}
+	
 	public void addTriangle(Vector3<Float> x, Vector3<Float> y, String name) {
-		addLine(new Vector2<Float>(x.getX(), y.getX()), new Vector2<Float>(x.getY(), y.getY()), "");
-		addLine(new Vector2<Float>(x.getY(), y.getY()), new Vector2<Float>(x.getZ(), y.getZ()), "");
-		addLine(new Vector2<Float>(x.getZ(), y.getZ()), new Vector2<Float>(x.getX(), y.getX()), "");
+		ObjectCollection collection = new ObjectCollection(name);
+		//collection.add(new ShapeObject(Shapes.Line(x.getX(), y.getX()), ));
 	}
 	
 	public void addLines(float[] x, float[] y, String name) {

@@ -3,11 +3,14 @@ package main.graphics;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import main.DrawHandler;
+import main.graphics.objects.ObjectCollection;
+import main.graphics.objects.ShapeObject;
 
 public class Canvas extends JPanel implements Runnable{
 
@@ -57,17 +60,25 @@ public class Canvas extends JPanel implements Runnable{
 		Drawing drawing = Drawing.getInstance();
 		
 		if (drawing != null) {
-			for (ShapeObject object : drawing.getObjects()) {
-				if (object.getShape() != null) {
-					if(object.isFilled()) {
-						drawer.fill(object.getShape(), object.getColor());
-					}else if(!object.isFilled()){					
-						drawer.draw(object.getShape(), object.getColor());
-					}
+			drawObjects(drawing.getObjects());
+			if (drawing.getCollections() != null) {
+				for (ObjectCollection collection : drawing.getCollections()) {
+					drawObjects(collection.getObjects());
 				}
 			}
 		}
-		
+	}
+	
+	private void drawObjects(ArrayList<ShapeObject> objects) {
+		for (ShapeObject object : objects) {
+			if (object.getShape() != null) {
+				if(object.isFilled()) {
+					drawer.fill(object.getShape(), object.getColor());
+				}else if(!object.isFilled()){					
+					drawer.draw(object.getShape(), object.getColor());
+				}
+			}									
+		}
 	}
 	
 	private void wait(int ms) {
