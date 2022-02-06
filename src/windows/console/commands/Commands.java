@@ -48,7 +48,7 @@ public class Commands {
 					r = Integer.parseInt(values[1]);
 					g = Integer.parseInt(values[2]);
 					b = Integer.parseInt(values[3]);
-					if(r+g+b > 255*3) {
+					if((float)(r+g+b)/3 > 255) {
 						System.out.println("To high!");
 					}
 					newColor = new Color(r, g, b);
