@@ -32,7 +32,7 @@ public class Commands {
 			}
 		});
 		
-		addFunc("play", new Action() {
+		addFunc("play", new Action("delay") {
 			
 			@Override
 			public void run() {
@@ -52,7 +52,7 @@ public class Commands {
 			}
 		});
 		
-		addFunc("setColor", new Action() {
+		addFunc("setColor", new Action("index, r, g, b") {
 			@Override
 			public void run(String args) {
 				System.out.println("Args: " + args);
@@ -85,7 +85,7 @@ public class Commands {
 			}
 		});
 		
-		addFunc("addLine", new Action() {
+		addFunc("addLine", new Action("x1, y1, x2, y2") {
 			
 			@Override
 			public void run(String args) {
