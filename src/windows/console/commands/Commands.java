@@ -104,21 +104,24 @@ public class Commands {
 			}
 		});
 		
-		addFunc("rotate", new Action("theta") {
+		addFunc("rotate", new Action("index, theta, offx, offy") {
 			
 			@Override
 			public void run(String args) {
+				int index;
 				float theta, offx, offy;
 				String[] vals = getArgs(args);
 				try {
-					theta = Integer.parseInt(vals[0]);
-					offx = Integer.parseInt(vals[1]);
-					offy = Integer.parseInt(vals[2]);
+					index = Integer.parseInt(vals[0]);
+					theta = Integer.parseInt(vals[1]);
+					offx = Integer.parseInt(vals[2]);
+					offy = Integer.parseInt(vals[3]);
 					
 				}catch (Exception e) {
 					return;
 				}
-			}
+				draw.rotate(index, theta, offx, offy);
+			}			
 		});
 	}
 	
