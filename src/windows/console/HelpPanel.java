@@ -19,7 +19,11 @@ public class HelpPanel extends JTextArea{
 		this.setText("Commands:\n");
 		for (String key : commands.getCommands().keySet()) {
 			if (key.contains(cmd)) {
-				this.append("\t" + key + "\n");
+				String info = "";
+				if (commands.getCommands().get(key).getInfo().length() > 0) {
+					info = commands.getCommands().get(key).getInfo();
+				}
+				this.append("\t" + key + " (" + info + ")" + "\n");
 			}
 		}
 	}

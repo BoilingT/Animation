@@ -15,6 +15,7 @@ public class Drawing {
 	private static Color color = Color.black;
 	private static boolean fill = false;
 	private static boolean draw = true;
+	private static int delay = 1;
 	private static ArrayList<ObjectCollection> objectCollection = new ArrayList<>();
 	private static ArrayList<ShapeObject> objects = new ArrayList<>();
 	
@@ -42,6 +43,10 @@ public class Drawing {
 		return draw;
 	}
 	
+	public int getDelay() {
+		return delay;
+	}
+	
 	public ArrayList<ObjectCollection> getCollections(){
 		return objectCollection;
 	}
@@ -65,9 +70,7 @@ public class Drawing {
 	public ShapeObject getObject(ShapeObject obj) {		
 		return objects.get(objects.indexOf(obj));
 	}
-	
-	
-	
+		
 	public void addShape(ShapeObject obj) {
 		objects.add(obj);
 	}
@@ -112,5 +115,11 @@ public class Drawing {
 	
 	public void play() {
 		draw = true;
+	}
+	
+	public void setDelay(int delay) {
+		if (delay > 0) {
+			Drawing.delay = delay;
+		}
 	}
 }

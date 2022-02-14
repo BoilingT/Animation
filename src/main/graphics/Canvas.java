@@ -40,7 +40,9 @@ public class Canvas extends JPanel implements Runnable{
 	private void update() {
 		if (Drawing.getInstance().shouldDraw()) {
 			drawHandler.update();
-			
+			if (updateDelay != Drawing.getInstance().getDelay()) {
+				updateDelay = Drawing.getInstance().getDelay();			
+			}
 		}
 	}
 	

@@ -3,18 +3,19 @@ package main.graphics.objects;
 import java.awt.Color;
 import java.awt.Shape;
 import java.awt.geom.AffineTransform;
+import java.awt.geom.Point2D;
 
 import global.math.Vector2;
 
 public class ShapeObject {
 
 	private String name;
-	private Vector2<Float> pos;
+	private Transform transform = new Transform();
 	private Color color;
 	private boolean filled;
 
 	private Shape shape;
-	private AffineTransform transform;
+	private AffineTransform affineTransform;
 	
 	public String getName() {
 		return this.name;
@@ -29,19 +30,34 @@ public class ShapeObject {
 	}
 	
 	public Vector2<Float> getPos() {
-		return pos;
+		return transform.position();
 	}
 	
 	public void setPos(Vector2<Float> pos) {
-		transform.setToTranslation(pos.getX() - this.pos.getX(), pos.getY() - this.pos.getY());
-		this.shape = transform.createTransformedShape(this.shape);
-		this.pos = pos;
+		//affineTransform.setToTranslation(pos.getX() - this.transform.position().getX(), pos.getY() - this.transform.position().getY());
+		float x = pos.getX() - this.transform.position().getX();
+		float y = pos.getY() - this.transform.position().getY();
+//		System.out.println("Pos:\nx: " + this.transform.position().getX() + "\ny: " + this.transform.position().getY());
+//		System.out.println("Translate:\nx: " + x + "\ny: " + y);
+		affineTransform.setToTranslation(x, y);
+		//affineTransform.transform(new Point2D.Float(this.transform.position().getX(), this.transform.position().getY()), new Point2D.Float(x, y));
+		this.shape = affineTransform.createTransformedShape(this.shape);
+		
+		this.transform.position().set(new Vector2<Float>(this.transform.position().getX() + x, this.transform.position().getY() + y));
+
 	}
 	
 	public void translate(Vector2<Float> translation) {
-		transform.setToTranslation(translation.getX(), translation.getY());
-		this.shape = transform.createTransformedShape(this.shape);
-		this.pos = new Vector2<Float>(pos.getX() + translation.getX(), pos.getY() + translation.getY());
+		affineTransform.translate(translation.getX(), translation.getY());
+		this.shape = affineTransform.createTransformedShape(this.shape);
+		this.transform.position().set(new Vector2<Float>(this.transform.position().getX() + translation.getX(), this.transform.position().getY() + translation.getY()));
+	}
+	
+	public void rotate(float degrees, float offsetx, float offsety) {
+		affineTransform.setToRotation(degrees * Math.PI/180, this.transform.position().getX() + offsetx, this.transform.position().getY() + offsety);
+		//affineTransform.setToRotation(degrees * Math.PI/180);
+		this.shape = affineTransform.createTransformedShape(this.shape);
+		
 	}
 
 	public Color getColor() {
@@ -71,10 +87,10 @@ public class ShapeObject {
 	}
 	
 	public void set(Shape shape, Color color, boolean fill) {
-		transform = new AffineTransform();
-		Shape tempShape = transform.createTransformedShape(shape);
+		affineTransform = new AffineTransform();
+		Shape tempShape = affineTransform.createTransformedShape(shape);
 		this.shape = tempShape;
-		this.pos = new Vector2<Float>((float) tempShape.getBounds().x, (float) tempShape.getBounds().y);
+		this.transform.position().set(new Vector2<Float>((float) tempShape.getBounds().x, (float) tempShape.getBounds().y));
 		this.setColor(color);
 		this.filled = fill;
 	}

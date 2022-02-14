@@ -1,15 +1,26 @@
 package windows.console.commands;
 
-public class Action implements IAction{
+public abstract class Action implements IAction{
+	private String info;
+	
+	public String getInfo() {
+		return this.info;
+	}
+	
+	public void setInfo(String info) {
+		this.info = info;
+	}
+	
+	public Action(String info) {
+		this.info = info;
+	}
 	
 	public Action() {
+		this.info = "";
 	}
 	
 	@Override
-	public void run(String args) {
-		// TODO Auto-generated method stub
-		
-	}
+	public abstract void run(String args);
 
 	@Override
 	public void run() {

@@ -3,6 +3,7 @@ package windows.console.commands;
 import java.awt.Color;
 import java.util.HashMap;
 
+import global.math.Vector2;
 import main.graphics.Drawing;
 
 public class Commands {
@@ -23,12 +24,30 @@ public class Commands {
 			public void run() {
 				draw.stop();
 			}
+
+			@Override
+			public void run(String args) {
+				// TODO Auto-generated method stub
+				
+			}
 		});
 		
 		addFunc("play", new Action() {
 			
 			@Override
 			public void run() {
+				draw.play();
+			}
+
+			@Override
+			public void run(String args) {
+				int delay = 0;
+				try {
+					delay = Integer.parseInt(getArgs(args)[0]);
+				}catch (Exception e) {
+					return;
+				}
+				draw.setDelay(delay);
 				draw.play();
 			}
 		});
@@ -65,6 +84,42 @@ public class Commands {
 				draw.getObject(index).setColor(newColor);
 			}
 		});
+		
+		addFunc("addLine", new Action() {
+			
+			@Override
+			public void run(String args) {
+				float x1, x2, y1, y2;
+				String[] vals = getArgs(args);
+				try {
+					x1 = Integer.parseInt(vals[0]);
+					y1 = Integer.parseInt(vals[1]);
+					x2 = Integer.parseInt(vals[2]);
+					y2 = Integer.parseInt(vals[3]);
+					
+				}catch (Exception e) {
+					return;
+				}
+				draw.addLine(new Vector2<Float>(x1, y1), new Vector2<Float>(x2, y2), "");
+			}
+		});
+		
+		addFunc("rotate", new Action("theta") {
+			
+			@Override
+			public void run(String args) {
+				float theta, offx, offy;
+				String[] vals = getArgs(args);
+				try {
+					theta = Integer.parseInt(vals[0]);
+					offx = Integer.parseInt(vals[1]);
+					offy = Integer.parseInt(vals[2]);
+					
+				}catch (Exception e) {
+					return;
+				}
+			}
+		});
 	}
 	
 	private String[] getArgs(String args) {
@@ -73,7 +128,7 @@ public class Commands {
 	
 	private void addFunc(String cmd, Action actionListener) {
 		if (commands == null) {
-			System.out.println("commands = null");
+			System.out.println("commands is null");
 			return;
 		}
 		System.out.println(cmd + " added");
