@@ -15,7 +15,7 @@ public class Drawing {
 	private static Color color = Color.black;
 	private static boolean fill = false;
 	private static boolean draw = true;
-	private static int delay = 1;
+	private static int delay = 10;
 	private static ArrayList<ObjectCollection> objectCollection = new ArrayList<>();
 	private static ArrayList<ShapeObject> objects = new ArrayList<>();
 	
@@ -107,6 +107,10 @@ public class Drawing {
 	
 	public void deleteCollection(ObjectCollection collection) {
 		objectCollection.remove(collection);
+	}
+	
+	public void rotate(int index, float theta, float offx, float offy) {
+		objects.get(index).rotate(theta, offx, offy);
 	}
 	
 	public void stop() {
