@@ -1,10 +1,13 @@
 package windows.console.commands;
 
 import java.awt.Color;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import global.math.Vector2;
 import main.graphics.Drawing;
+import main.graphics.objects.ShapeObject;
+import windows.console.ConsoleWindow;
 
 public class Commands {
 	private Drawing draw; 
@@ -104,6 +107,7 @@ public class Commands {
 			}
 		});
 		
+
 		addFunc("rotate", new Action("index, theta, offx, offy") {
 			
 			@Override
@@ -122,6 +126,18 @@ public class Commands {
 				}
 				draw.rotate(index, theta, offx, offy);
 			}			
+		});
+		
+		addFunc("showObjectList", new Action() {
+			
+			@Override
+			public void run(String args) {
+				ArrayList<ShapeObject> vals = draw.getObjects();
+				for (int i = 0; i < vals.size(); i++) {
+					ShapeObject val = vals.get(i);
+					ConsoleWindow.getInstance().cout("ID: " + i + " Name: " + val.getName() + " Color: " + val.getColor() + " Postion: " + val.getPos().toString());
+				}
+			}
 		});
 	}
 	
